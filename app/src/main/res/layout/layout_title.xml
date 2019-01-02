@@ -24,8 +24,6 @@
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:paddingLeft="@dimen/x26"
-        android:paddingRight="@dimen/x26"
         android:src="@mipmap/ic_back"
         android:visibility="gone" />
 
@@ -54,10 +52,8 @@
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:paddingLeft="@dimen/x26"
-        android:paddingRight="@dimen/x26"
         android:background="@color/toptitle"
         android:src="@mipmap/ic_back"
-        android:visibility="gone" />
+        />
 
 </RelativeLayout>
