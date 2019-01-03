@@ -1,9 +1,10 @@
 package com.example.chch2.baseapp.base.view;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import com.example.chch2.baseapp.base.inter.IBase;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseFragment extends Fragment implements IBase{
+public abstract class BaseFragment extends android.support.v4.app.Fragment implements IBase{
 
     protected View mRootView;//根view
     protected View mTitleView;//标题view
@@ -54,5 +55,11 @@ public abstract class BaseFragment extends Fragment implements IBase{
 
     protected int getTitleId() {
         return R.layout.layout_title;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        bindView(savedInstanceState);
     }
 }

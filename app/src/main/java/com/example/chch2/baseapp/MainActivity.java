@@ -1,95 +1,146 @@
 package com.example.chch2.baseapp;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.chch2.baseapp.base.api.ApiMannger;
-import com.example.chch2.baseapp.base.bean.BaseEntity;
-import com.example.chch2.baseapp.base.inter.ApiCallBack;
 import com.example.chch2.baseapp.base.manager.AppManager;
-import com.example.chch2.baseapp.base.manager.TitleManager;
-import com.example.chch2.baseapp.base.presenter.BasePresenter;
-import com.example.chch2.baseapp.base.view.BaseActivity;
-import com.google.gson.JsonObject;
+import com.example.chch2.baseapp.base.util.StatusBarUtil;
+import com.example.chch2.baseapp.view.fragment.FirstFragment;
+import com.example.chch2.baseapp.view.fragment.FourFragment;
+import com.example.chch2.baseapp.view.fragment.SecondFragment;
+import com.example.chch2.baseapp.view.fragment.ThirdFragment;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener{
+public class MainActivity extends FragmentActivity implements View.OnClickListener
+,ViewPager.OnPageChangeListener{
 
-    @BindView(R.id.tv_main)
-    TextView tv_main;
 
+
+    @BindView(R.id.vp_main)
+    ViewPager vp_main;
+
+    @BindView(R.id.tv_first)
+            TextView tv_first;
+    @BindView(R.id.tv_second)
+            TextView tv_second;
+    @BindView(R.id.tv_third)
+            TextView tv_third;
+    @BindView(R.id.tv_four)
+            TextView tv_four;
+
+
+    FirstFragment firstFragment;
+    SecondFragment secondFragment;
+    ThirdFragment thirdFragment;
+    FourFragment fourFragment;
+    List<Fragment> fragmentList = new ArrayList<>();
+    TextView[] textViews;
+
+    private int currentTabIndex = 0;//当前fragment
 
     @Override
-    public BasePresenter getPresenter() {
-        return null;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        AppManager.getAppManager().addActivity(this);
+        StatusBarUtil.setStatus(this);
+        initViewPager();
     }
 
-    @Override
-    public void bindView(Bundle savedInstanceState) {
-        TitleManager.showDefaultTitle(this,"这是主页");
-        tv_main.setOnClickListener(this);
+
+    private void initViewPager(){
+        firstFragment = new FirstFragment();
+        secondFragment = new SecondFragment();
+        thirdFragment = new ThirdFragment();
+        fourFragment = new FourFragment();
+
+        fragmentList.add(firstFragment);
+        fragmentList.add(secondFragment);
+        fragmentList.add(thirdFragment);
+        fragmentList.add(fourFragment);
+        textViews = new TextView[]{tv_first,tv_second,tv_third,tv_four};
+        tv_first.setOnClickListener(this);
+        tv_second.setOnClickListener(this);
+        tv_third.setOnClickListener(this);
+        tv_four.setOnClickListener(this);
+
+        vp_main.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int i) {
+                return fragmentList.get(i);
+            }
+
+            @Override
+            public int getCount() {
+                return fragmentList.size();
+            }
+        });
+        vp_main.setCurrentItem(currentTabIndex);
+        textViews[currentTabIndex].setActivated(true);
     }
 
-    @Override
-    public int getContentId() {
-        return R.layout.activity_main;
-    }
+
+
+
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_main:
-                Map<String ,String> map = new HashMap<>();
-                map.put("status","1");
-                getHighwayconditon(map, new ApiCallBack<List<JsonObject>>() {
-                    @Override
-                    public void onSucc(List<JsonObject> data) {
-                        Toast.makeText(mContext,"onsucc",Toast.LENGTH_LONG).show();
-                    }
 
-                    @Override
-                    public void onFail() {
-                        Toast.makeText(mContext,"fail",Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onMessage(int code, String message) {
-                        Toast.makeText(mContext,"message",Toast.LENGTH_LONG).show();
-                    }
-                });
-
+                break;
+            case R.id.tv_first:
+                clickStatus(0);
+                break;
+            case R.id.tv_second:
+                clickStatus(1);
+                break;
+            case R.id.tv_third:
+                clickStatus(2);
+                break;
+            case R.id.tv_four:
+                clickStatus(3);
                 break;
         }
     }
 
-    public void getHighwayconditon(final Map<String, String> params, final ApiCallBack<List<JsonObject>> callBack) {
-        ApiMannger.getHighwayconditon(params)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<BaseEntity<List<JsonObject>>>() {
-                    @Override
-                    public void call(BaseEntity<List<JsonObject>> industryEntityBaseEntity) {
-                        if (industryEntityBaseEntity.getCode() == 1000) {
-                            callBack.onSucc(industryEntityBaseEntity.getData());
-                        } else {
-                            callBack.onMessage(industryEntityBaseEntity.getCode(), industryEntityBaseEntity.getMessage());
-                        }
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        callBack.onFail();
-                    }
-                });
+    @Override
+    public void onPageScrolled(int i, float v, int i1) {
+
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+        textViews[i].setActivated(true);
+        currentTabIndex = i;
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
+    }
+
+    private void clickStatus(int index){
+        for (int i = 0;i < textViews.length;i ++){
+            if(i == index){
+                textViews[i].setActivated(true);
+            }else {
+                textViews[i].setActivated(false);
+            }
+            currentTabIndex = index;
+            vp_main.setCurrentItem(currentTabIndex);
+        }
+
     }
 }

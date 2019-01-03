@@ -5,15 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/tv_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="这是一则基础开发版Android App,其中包含许多基础框架依赖，这样可以在以后使用的时候直接把该项目复制过去，然后再做"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v4.view.ViewPager>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/x2"
+    android:background="#e4e4e4"/>
+    <LinearLayout
+        android:background="#A4D3EE"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x140"
+        android:orientation="horizontal">
+        <TextView
+            android:background="@drawable/main_bottom_selector"
+            android:id="@+id/tv_first"
+            android:text="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="@dimen/x30"
+            android:layout_height="match_parent" />
+        <TextView
+            android:background="@drawable/main_bottom_selector"
+            android:id="@+id/tv_second"
+            android:text="2"
+            android:textSize="@dimen/x30"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <TextView
+            android:background="@drawable/main_bottom_selector"
+            android:id="@+id/tv_third"
+            android:text="3"
+            android:textSize="@dimen/x30"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <TextView
+            android:background="@drawable/main_bottom_selector"
+            android:id="@+id/tv_four"
+            android:text="4"
+            android:textSize="@dimen/x30"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
