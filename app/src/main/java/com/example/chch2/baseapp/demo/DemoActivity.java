@@ -2,6 +2,7 @@ package com.example.chch2.baseapp.demo;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -42,7 +43,9 @@ public class DemoActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 //rotateOnYCoordinate();
-                setAlipayDialog();
+                //setAlipayDialog();
+                Intent i = new Intent(mContext,GroupRedPacketActivity.class);
+                startActivity(i);
             }
         });
 
@@ -90,6 +93,22 @@ public class DemoActivity extends BaseActivity {
         final Dialog mCameraDialog = new Dialog(mContext, R.style.BottomDialog);
         final View root =  FrameLayout.inflate(mContext,
                 R.layout.lay_redpacket, null);
+        final ImageView im_packet = root.findViewById(R.id.im_packet);
+        im_packet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rotateOnYCoordinate(im_packet);
+            }
+        });
+
+        ImageView im_delete = root.findViewById(R.id.im_delete);
+        im_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCameraDialog.dismiss();
+            }
+        });
+
         mCameraDialog.setContentView(root);
         Window dialogWindow = mCameraDialog.getWindow();
         dialogWindow.setGravity(Gravity.CENTER);

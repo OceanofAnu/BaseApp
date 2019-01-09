@@ -17,6 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".demo.DemoActivity"
+            android:theme="@style/Fullscreen"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".demo.GroupRedPacketActivity"
+            android:theme="@style/Fullscreen"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>

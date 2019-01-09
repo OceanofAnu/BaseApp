@@ -123,7 +123,7 @@ public class TitleManager {
 
     //红色标题栏 字体白色
     public static void showRedTitle(Activity from, Object titleText, Object leftText, int leftImg, Object rightText, int rightImg){
-        showTitle(from,titleText,leftText,leftImg,rightText,rightImg,0xffE6473c,0xffffffff);
+        showTitle(from,titleText,leftText,leftImg,rightText,rightImg,0xffF6594E,0xffffffff);
     }
 
 

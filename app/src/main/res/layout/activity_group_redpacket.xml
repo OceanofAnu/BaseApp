@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y125"
+        android:background="@mipmap/elipse"
+        />
+
+    <ImageView
+        android:id="@+id/im_heading"
+        android:layout_width="@dimen/x123"
+        android:layout_height="@dimen/y123"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x63"
+        />
+    <TextView
+        android:id="@+id/tv_sender"
+        android:layout_marginTop="@dimen/y18"
+        android:layout_below="@+id/im_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/x30"
+        android:gravity="center_horizontal"
+        android:textColor="#080808"
+        android:text="99路的红包"/>
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_below="@+id/tv_sender"
+        android:layout_marginTop="@dimen/y25"
+        android:textColor="#080808"
+        android:textSize="@dimen/x28"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="恭喜发财，大吉大利"
+        />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/x39"
+        android:layout_below="@+id/tv_desc"
+        android:id="@+id/ll_money"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/x90"
+            android:text="3.58"
+            android:textColor="#080808"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_marginStart="@dimen/x17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元"
+            android:textSize="@dimen/x48"
+            android:textColor="#080808"
+            />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_tips"
+        android:layout_below="@+id/ll_money"
+        android:layout_marginTop="@dimen/y18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="已存入钱包，可直接提现"
+        android:textSize="@dimen/x26"
+        android:textColor="#385D99"/>
+    <TextView
+        android:layout_marginTop="@dimen/y69"
+        android:layout_below="@+id/tv_tips"
+        android:id="@+id/tv_group_des"
+        android:paddingStart="@dimen/x27"
+        android:text="5个红包共10元，19分钟被抢光"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/x30"
+        android:textColor="#999999"
+        android:gravity="start"
+        />-->
+
+
+
+    <!--<TextView
+        android:layout_marginTop="@dimen/x26"
+        android:id="@+id/line"
+        android:layout_alignParentTop="true"
+        android:background="#e4e4e4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />-->
+    <ListView
+    android:divider="#e4e4e4"
+    android:dividerHeight="1dp"
+    android:id="@+id/rl_redpacket"
+    android:layout_below="@+id/line"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</ListView>
+
+</RelativeLayout>

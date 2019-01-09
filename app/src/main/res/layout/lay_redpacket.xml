@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x622"
+    android:layout_height="@dimen/y834"
+   android:id="@+id/fl_packet"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_radius14"
+        android:scaleType="fitXY"
+        android:src="@mipmap/redpacketbg"/>
+
+    <LinearLayout
+        android:id="@+id/ll_redbg"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/im_delete"
+        android:layout_marginTop="@dimen/x40"
+        android:layout_marginEnd="@dimen/x40"
+        android:layout_gravity="end"
+        android:src="@mipmap/delete_icon"
+        android:layout_width="@dimen/x34"
+        android:layout_height="@dimen/x34" />
+
+    <ImageView
+        android:layout_marginTop="@dimen/x3"
+        android:layout_width="@dimen/x92"
+        android:layout_height="@dimen/x92"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/ic_launcher"
+        />
+    <TextView
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x23"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="99路-技术部杨杨"
+        android:textSize="@dimen/x34"
+        android:textColor="#FCD08C"
+        />
+    <TextView
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/x28"
+        android:textColor="#FCD08C"
+        android:text="给你发了一个红包"
+        />
+
+    <TextView
+        android:text="恭喜发财，大吉大利"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x59"
+        android:textSize="@dimen/x48"
+        android:textColor="#FCD08C"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/im_packet"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/x60"
+            android:layout_width="@dimen/x204"
+            android:layout_height="@dimen/x204"
+            android:src="@mipmap/redpacket_open"/>
+
+    </LinearLayout>
+
+    </FrameLayout>
+
+
+
+
